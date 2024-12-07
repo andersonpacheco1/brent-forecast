@@ -159,6 +159,15 @@ with modelos:
     st.subheader('Previsão com o Modelo Naive')
     st.components.v1.html(open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "previsao_naive_brent.html"), 'r').read(), height=600)
 
+    # Métricas de erro para o Modelo Naive
+    st.write("""
+    **Métricas de Erro do Modelo Naive:**
+    - **MSE (Erro Quadrático Médio)**: 3.68
+    - **MAE (Erro Absoluto Médio)**: 1.61
+
+    Como observado, o modelo Naive apresenta um MAE relativamente baixo, mas o MSE é mais elevado, indicando que o modelo comete erros significativos em períodos de grande variação dos preços.
+    """)
+
     # Explicação sobre o Modelo AutoARIMA
     st.write("""
     ### 2. Modelo AutoARIMA
@@ -169,6 +178,15 @@ with modelos:
     st.subheader('Previsão com o Modelo AutoARIMA')
     st.components.v1.html(open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "previsao_autoarima_brent.html"), 'r').read(), height=600)
 
+    # Métricas de erro para o Modelo AutoARIMA
+    st.write("""
+    **Métricas de Erro do Modelo AutoARIMA:**
+    - **MSE (Erro Quadrático Médio)**: 3.90
+    - **MAE (Erro Absoluto Médio)**: 1.60
+
+    O AutoARIMA apresenta uma leve melhoria sobre o Naive no MAE, mas o MSE um pouco mais alto indica que o modelo ainda tem dificuldades em capturar variações abruptas e imprevisíveis nos dados.
+    """)
+
     # Explicação sobre o Modelo Prophet
     st.write("""
     ### 3. Modelo Prophet
@@ -178,6 +196,15 @@ with modelos:
     # Gráfico do Modelo Prophet (HTML)
     st.subheader('Previsão com o Modelo Prophet')
     st.components.v1.html(open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "previsao_prophet.html"), 'r').read(), height=600)
+
+    # Métricas de erro para o Modelo Prophet
+    st.write("""
+    **Métricas de Erro do Modelo Prophet:**
+    - **MSE (Erro Quadrático Médio)**: 1.84
+    - **MAE (Erro Absoluto Médio)**: 1.05
+
+    O modelo Prophet se destaca com os menores erros de previsão, tanto em MAE quanto em MSE, o que reflete sua capacidade superior em capturar as tendências e padrões sazonais dos preços do petróleo Brent.
+    """)
 
     # Conclusões
     st.write("""
