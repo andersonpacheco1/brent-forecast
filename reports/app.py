@@ -47,6 +47,7 @@ with resumo:
 with eda:
     st.subheader('Comportamento dos Dados')
 
+    # Preço do Petróleo Brent
     st.subheader("Preço do Petróleo Brent")
     st.markdown("""
     O Petróleo Brent é uma das principais referências globais para precificação de petróleo. 
@@ -63,18 +64,20 @@ with eda:
     de alta volatilidade ou estabilidade no mercado. Ele é essencial para compreender como eventos 
     históricos e mudanças estruturais no setor energético afetaram o preço do petróleo.
     """)
-    with open(os.path.join(base_path, "preco_petroleo_brent.html"), "r") as f:
+    with open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "preco_petroleo_brent.html"), "r") as f:
         st.components.v1.html(f.read(), height=500)
 
+    # Tendência
     st.subheader("Tendência")
     st.markdown("""
     Este gráfico mostra a tendência de longo prazo nos preços, removendo ruídos e variações 
     sazonais para facilitar a análise de ciclos de alta e baixa.
-    O gráfico nos indica que no geral há uma tendência de alta para os preços do petróleo Brent, porém com algumas quedas fortes e repentinas, principalmente a partir de 2011.
+    O gráfico nos indica que no geral a uma tendência de alta para os preços do petróleo Brent, porém com algumas quedas fortes e repentinas principalmente a partir de 2011.
     """)
-    with open(os.path.join(base_path, "tendencia_petroleo_brent.html"), "r") as f:
+    with open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "tendencia_petroleo_brent.html"), "r") as f:
         st.components.v1.html(f.read(), height=500)
 
+    # Sazonalidade
     st.subheader("Sazonalidade")
     st.markdown("""
     Aqui são exibidos os padrões sazonais do preço do petróleo Brent, destacando repetições em 
@@ -84,9 +87,10 @@ with eda:
     possivelmente relacionados a fatores sazonais, como mudanças na demanda em diferentes épocas do ano, ajustes de oferta por produtores, ou influências externas como eventos 
     climáticos ou crises econômicas.
     """)
-    with open(os.path.join(base_path, "sazonalidade_petroleo_brent.html"), "r") as f:
+    with open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "sazonalidade_petroleo_brent.html"), "r") as f:
         st.components.v1.html(f.read(), height=500)
 
+    # Resíduos
     st.subheader("Resíduos")
     st.markdown("""
     Os resíduos representam as discrepâncias entre os valores reais e os valores ajustados pelo 
@@ -97,68 +101,102 @@ with eda:
     3. *Volatilidade crescente*: Resíduos mais amplos ao longo do tempo podem refletir maior sensibilidade a fatores geopolíticos e econômicos.
     Esses resíduos ajudam a avaliar a qualidade do modelo e identificar períodos de instabilidade no mercado.
     """)
-    with open(os.path.join(base_path, "residuos_petroleo_brent.html"), "r") as f:
+    with open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "residuos_petroleo_brent.html"), "r") as f:
         st.components.v1.html(f.read(), height=500)
 
     st.subheader('Análise Geopolítica')
+    # Introdução sobre o impacto dos eventos geopolíticos
     st.write("""
     Os grandes eventos geopolíticos têm um impacto significativo no preço do Petróleo Brent, uma vez que afetam diretamente a oferta e demanda do mercado global. 
     Esses eventos podem ser conflitos armados, embargos, revoluções, ou até negociações de paz entre países produtores de petróleo, o que pode causar uma interrupção na produção ou no transporte de petróleo.
     Com isso, o preço do petróleo pode experimentar grandes flutuações, dependendo da gravidade e da duração desses eventos.
     """)
 
+    # Exibindo o gráfico de eventos geopolíticos gerais
     st.subheader('Impacto dos Grandes Eventos Geopolíticos no Preço do Petróleo Brent')
     st.write("""
     O gráfico abaixo mostra a relação entre os maiores eventos geopolíticos e o preço do Petróleo Brent. 
     Como pode ser observado, as variações mais expressivas começaram a ocorrer a partir dos anos 2000, com os maiores eventos provocando aumentos significativos no preço do petróleo.
     """)
-    image1 = Image.open(os.path.join(base_path, "preco_petroleo_brent_com_eventos_geopoliticos.png"))
+    image1 = Image.open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "preco_petroleo_brent_com_eventos_geopoliticos.png"))
     st.image(image1, caption='Preço do Petróleo Brent com Grandes Eventos Geopolíticos')
 
+    # Texto explicativo sobre o gráfico
     st.write("""
     Ao que tudo indica, conforme visto no gráfico acima, os maiores eventos geopolíticos tendem a causar grandes variações no preço, principalmente a partir dos anos 2000, onde as variações parecem ser cada vez mais expressivas.
     """)
 
+    # Exibindo o gráfico de eventos geopolíticos focados em países produtores
     st.subheader('Impacto dos Eventos Geopolíticos nas Regiões Produtoras de Petróleo')
     st.write("""
     O gráfico abaixo foca apenas nos eventos que afetam diretamente os países produtores de petróleo, e parece ter uma correlação ainda mais forte com as variações nos preços do petróleo Brent.
     Esses eventos têm um impacto direto na produção e oferta do petróleo, provocando flutuações mais intensas e rápidas no preço.
     """)
-    image2 = Image.open(os.path.join(base_path, "preco_petroleo_brent_com_eventos_produtores.png"))
-    st.image(image2, caption='Preço do Petróleo Brent com Eventos em Países Produtores')
+    image2 = Image.open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "preco_petroleo_brent_com_eventos_produtores.png"))
+    st.image(image2, caption='Preço do Petróleo Brent com Eventos Geopolíticos em Regiões Produtoras')
+
+    # Conclusão
+    st.write("""
+    **Conclusão**: Com base nos gráficos apresentados, fica claro que os eventos geopolíticos, especialmente aqueles que afetam diretamente os países produtores de petróleo, têm uma influência significativa sobre o preço do petróleo Brent. 
+    Esses eventos geram incertezas no mercado, o que pode resultar em grandes oscilações de preços, como evidenciado nos gráficos.
+    """)
 
 with modelos:
-    st.subheader('Modelos de Previsão')
+    st.title('Comparação de Modelos para Previsão de Preços do Petróleo Brent')
+
+    # Explicação sobre os modelos
     st.write("""
-    Para prever o preço do petróleo Brent no futuro, foram utilizados três modelos distintos: 
-    o Naive, AutoARIMA e Prophet, sendo que cada um foi testado e avaliado conforme seu desempenho nos dados históricos.
-    """)
-    st.write("""
-    ### Naive Model
-    O modelo Naive é o mais simples, assumindo que o valor futuro será igual ao valor mais recente. 
-    Apesar de ser útil em ambientes com pouca variação, o modelo tem limitações quando há tendências ou sazonalidade nos dados.
-    """)
-    st.write("""
-    ### AutoARIMA
-    O modelo AutoARIMA é mais sofisticado, ajustando-se automaticamente para encontrar o melhor modelo ARIMA (AutoRegressive Integrated Moving Average) para os dados. 
-    Ele foi eficaz na captura de tendências e padrões sazonais, mas ainda carece de flexibilidade para lidar com eventos externos de grande impacto.
-    """)
-    st.write("""
-    ### Prophet
-    O modelo Prophet é o mais avançado, desenvolvido pela equipe do Facebook para lidar com séries temporais complexas. 
-    Ele consegue capturar padrões sazonais e tendências com grande precisão, além de ser altamente configurável para incorporar efeitos de eventos externos.
-    O modelo Prophet se mostrou o mais eficiente na previsão do preço do petróleo Brent.
+    Neste estudo, foram avaliados três modelos para prever os preços do petróleo Brent: o modelo Naive, o AutoARIMA e o Prophet. Cada um desses modelos tem características distintas que impactam a acurácia e a capacidade de prever com precisão o comportamento dos preços no futuro.
     """)
 
-    st.subheader('Comparação de Modelos')
-    image3 = Image.open(os.path.join(base_path, "observada.png"))
-    st.image(image3, caption='Observada')
+    # Explicação sobre o Modelo Naive
+    st.write("""
+    ### 1. Modelo Naive
+    O modelo Naive utiliza o valor mais recente da série temporal como previsão para os próximos períodos. Esse modelo simples é útil como uma referência inicial, mas apresenta algumas limitações, como a incapacidade de capturar tendências ou padrões temporais importantes. Embora o erro absoluto médio (MAE) seja relativamente baixo, o erro quadrático médio (MSE) é maior, refletindo a tendência do modelo em cometer erros maiores em algumas previsões, principalmente em períodos com grande variação nos preços.
+    """)
 
-    image4 = Image.open(os.path.join(base_path, "tendencia.png"))
-    st.image(image4, caption='Tendência')
+    # Gráfico do Modelo Naive (HTML)
+    st.subheader('Previsão com o Modelo Naive')
+    st.components.v1.html(open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "previsao_naive_brent.html"), 'r').read(), height=600)
 
-    image5 = Image.open(os.path.join(base_path, "sazonalidade.png"))
-    st.image(image5, caption='Sazonalidade')
+    # Explicação sobre o Modelo AutoARIMA
+    st.write("""
+    ### 2. Modelo AutoARIMA
+    O modelo AutoARIMA (AutoRegressive Integrated Moving Average) é mais avançado que o Naive, pois tenta identificar automaticamente a melhor combinação de tendências e sazonalidade nos dados. Ele apresenta uma leve melhoria no MAE em relação ao Naive, indicando que o modelo é capaz de capturar as variações de preços com mais precisão. No entanto, o MSE do AutoARIMA é ligeiramente maior que o do Naive, o que sugere que o modelo ainda pode ser sensível a grandes variações nos dados, especialmente em horizontes mais curtos.
+    """)
 
-    image6 = Image.open(os.path.join(base_path, "residuos.png"))
-    st.image(image6, caption='Resíduos')
+    # Gráfico do Modelo AutoARIMA (HTML)
+    st.subheader('Previsão com o Modelo AutoARIMA')
+    st.components.v1.html(open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "previsao_autoarima_brent.html"), 'r').read(), height=600)
+
+    # Explicação sobre o Modelo Prophet
+    st.write("""
+    ### 3. Modelo Prophet
+    O modelo Prophet, desenvolvido pelo Facebook, é uma ferramenta mais robusta para previsão de séries temporais, especialmente quando há tendências sazonais e feriados envolvidos. Ele se destaca significativamente em relação aos outros modelos, com uma melhoria de mais de 50% no MSE em comparação com o AutoARIMA e o Naive. Além disso, o Prophet apresenta o menor MAE entre os modelos avaliados, mostrando que ele é o mais consistente na previsão dos preços do Brent.
+    """)
+
+    # Gráfico do Modelo Prophet (HTML)
+    st.subheader('Previsão com o Modelo Prophet')
+    st.components.v1.html(open(os.path.join(os.path.dirname(__file__), "..", "reports", "figures", "previsao_prophet.html"), 'r').read(), height=600)
+
+    # Conclusões
+    st.write("""
+    ### Conclusões:
+    - **Naive**: Embora simples, o modelo Naive serve como uma boa referência inicial, mas sofre com erros maiores devido à sua incapacidade de capturar as variações complexas nos dados. 
+    - **AutoARIMA**: Apresenta uma leve melhoria sobre o Naive, conseguindo identificar algumas variações sazonais e tendências, mas ainda com sensibilidade a erros maiores.
+    - **Prophet**: Se destaca como o modelo mais eficaz, com uma redução significativa nos erros e uma previsão mais consistente. Ele é o mais indicado para prever os preços do petróleo Brent entre os modelos testados.
+
+    A tabela abaixo apresenta as métricas de erro de cada modelo:
+    - **MSE (Erro Quadrático Médio)** do Modelo Naive: 3.68
+    - **MAE (Erro Absoluto Médio)** do Modelo Naive: 1.61
+    - **MSE (Erro Quadrático Médio)** do Modelo AutoARIMA: 3.90
+    - **MAE (Erro Absoluto Médio)** do Modelo AutoARIMA: 1.60
+    - **MSE (Erro Quadrático Médio)** do Modelo Prophet: 1.84
+    - **MAE (Erro Absoluto Médio)** do Modelo Prophet: 1.05
+    """)
+
+    # Conclusão Geral
+    st.write("""
+    ### Conclusão Geral
+    Com base nos resultados dos modelos, o **Prophet** se mostra como a melhor opção para prever o preço do petróleo Brent. Sua capacidade de capturar tendências e padrões sazonais, combinada com uma significativa redução nos erros, faz dele o modelo mais indicado entre os avaliados.
+    """)
